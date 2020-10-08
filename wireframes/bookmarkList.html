@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>My Bookmarks</title>
+</head>
+
+<body>
+    <main>
+
+        <header>
+            <h1>BOOKMARKS</h1>
+        </header>
+
+        <section class="row">
+            <div class="controls">
+                <form>
+                    <button class="new-button" type="submit" id="js-new-bookmark">NEW</button>
+
+                    <label for="filter-control" id="filter-label">FILTER</label>
+                    <select class="filter-control" name="filter" id="js-ratings-filter">
+                    <option value="0">All</option>
+                    <option value="5">5+ stars</option>
+                    <option value="4">4+ stars</option>
+                    <option value="3">3+ stars</option>
+                    <option value="2">2+ stars</option>
+                </select>
+                </form>
+            </div>
+        </section>
+
+        <section class="row">
+            <div class="bookmark-container">
+                <ul class="js-bookmarks-container">
+                    <li class="bookmark-item js-bookmark-item" data-id="">
+                        <section class="bookmark-header js-bookmark-header">
+                            <button class="header-button">
+                            Youtube | <span>&#9733;</span>
+                        </button>
+                        </section>
+                    </li>
+                    <li class="bookmark-item js-bookmark-item" data-id="">
+                        <section class="bookmark-header js-bookmark-header">
+                            <button class="header-button">
+                            Youtube | <span>&#9733;</span>
+                        </button>
+                        </section>
+                    </li>
+                    <li class="bookmark-item js-bookmark-item" data-id="">
+                        <section class="bookmark-header js-bookmark-header">
+                            <button class="header-button">
+                            Youtube | <span>&#9733;</span>
+                        </button>
+                        </section>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+    </main>
+</body>
+
+</html>

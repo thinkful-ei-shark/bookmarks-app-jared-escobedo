@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>My Bookmarks</title>
+</head>
+
+<body>
+    <main>
+
+        <header>
+            <h1>BOOKMARKS</h1>
+        </header>
+
+        <section class="row">
+            <div class="controls">
+                <form>
+                    <button class="new-button" type="submit" id="js-new-bookmark">NEW</button>
+                    <label for="filter-control" id="filter-label">FILTER</label>
+                    <select class="filter-control" name="filter" id="js-ratings-filter">
+                    <option value="0">All</option>
+                    <option value="5">5+ stars</option>
+                    <option value="4">4+ stars</option>
+                    <option value="3">3+ stars</option>
+                    <option value="2">2+ stars</option>
+                </select>
+                </form>
+            </div>
+        </section>
+
+        <section class="row">
+            <div id="js-form-container" class="form-container">
+                <form id="js-new-item-form">
+                    <fieldset>
+                        <legend class="form">NEW BOOKMARK</legend>
+                        <div class="form">
+                            <label for="js-form-title">TITLE</label>
+                            <input type="text" id="js-form-title" name="title" placeholder="Bookmark title" required>
+                        </div>
+                        <div class="form">
+                        <label for="js-form-rating" id="rating-label">RATING</label>
+                        <select class="filter-control" name="filter" id="js-ratings-filter">
+                            <option value="5" selected>5</option>
+                            <option value="4">4</option>
+                            <option value="3">3</option>
+                            <option value="2">2</option>
+                            <option value="1">1</option>
+                        </select>
+                        </div>
+                        <div class="form">
+                        <label for="js-form-description">DESCRIPTION</label>
+                            <textarea id="js-form-description" name="description" placeholder="This is a really cool website!"></textarea>
+                        </div>
+                        <div class="form">
+                        <label for="js-form-url">URL</label>
+                            <input type="url" id="js-form-url" name="url" placeholder="https://...">
+                        </div>
+                        <div class="add-btn-container">
+                            <button type="submit" id="js-add-bookmark" class="add-button">ADD BOOKMARK</button>
+                            <button type="button" id="js-cancel-bookmark" class="cancel-button">CANCEL</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+
+    </main>
+</body>
+
+</html>

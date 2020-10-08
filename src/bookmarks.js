@@ -3,15 +3,11 @@ import $ from 'jquery';
 import api from './api';
 import STORE from './store';
 
-
-
-// --- RENDER --- //
+// Render the page
 
 const render = function() {
     $('#main').html(generateBookmarkHeader());
     if (STORE.adding) {
-        // $('.controls').toggleClass('hidden');
-        // $('.js-error-container').toggleClass('hidden');
         $('.js-bookmarks-container').html(generateBookmarkAddHTML());
         renderError();  
         bindEventListeners();
@@ -29,9 +25,34 @@ const render = function() {
     }
 };
 
+// Generate header and starting view of page
 
+const generateBookmarkHeader = function() {
+    return `
+    <header>
+        <h1>Bookmark App</h1>
+    </header>
+    <div class="flex-container">
+        <div class="controls">
+            <form class="flex-form">
+                <button class="new-button" id="js-new-bookmark">NEW</button>
+                <select class="filter-control" name="filter" id="js-ratings-filter">
+                    <option value="" disabled selected hidden>FILTER</option>
+                    <option value="5">5+ stars</option>
+                    <option value="4">4+ stars</option>
+                    <option value="3">3+ stars</option>
+                    <option value="2">2+ stars</option>
+                    <option value="1">1+ stars</option>
+                </select>
+            </form>
+        </div>
+    <section class="js-bookmarks-container">
+    </section>
+    </div>
+    `;
+};
 
-// --- LISTED BOOKMARK --- //
+// If a bookmark exists, display all here
 
 const generateBookmarkHTML = function(bookmark) {
     let expandBookmark = !bookmark.expand ? 'hidden' : '';
@@ -56,38 +77,14 @@ const generateBookmarkHTML = function(bookmark) {
     `;
 };
 
+// List all bookmarks
 
-
-// --- GENERATE HEADER --- //
-
-const generateBookmarkHeader = function() {
-    return `
-    <header>
-        <h1>BOOKMARKS</h1>
-    </header>
-    <div class="flex-container">
-        <div class="controls">
-            <form class="flex-form">
-                <button class="new-button" id="js-new-bookmark">NEW</button>
-                <select class="filter-control" name="filter" id="js-ratings-filter">
-                    <option value="" disabled selected hidden>FILTER</option>
-                    <option value="5">5+ stars</option>
-                    <option value="4">4+ stars</option>
-                    <option value="3">3+ stars</option>
-                    <option value="2">2+ stars</option>
-                    <option value="1">1+ stars</option>
-                </select>
-            </form>
-        </div>
-    <section class="js-bookmarks-container">
-    </section>
-    </div>
-    `;
+const generateBookmarkListHTML = function(bookmarks) {
+    const bookmarkListHTML = bookmarks.map(bookmark => generateBookmarkHTML(bookmark));
+    return bookmarkListHTML.join('');
 };
 
-
-
-// --- GENERATE ADD BOOKMARK --- //
+// Add a bookmark entry
 
 const generateBookmarkAddHTML = function() {
     return `
@@ -95,16 +92,16 @@ const generateBookmarkAddHTML = function() {
             <div id="js-form-container" class="form-container">
                 <form id="js-new-item-form">
                     <fieldset>
-                        <legend class="form">NEW BOOKMARK</legend>
+                        <legend class="form">Create Entry</legend>
                         <div class="form">
-                            <label for="js-form-title">TITLE</label>
+                            <label for="js-form-title">Bookmark Name</label>
                         </div>
                         <div class="form">
-                            <input type="text" id="js-form-title" name="title" placeholder="Bookmark title" required>
+                            <input type="text" id="js-form-title" name="title" placeholder="E.g. Thinkful" required>
                         </div>
                         <hr>
                         <div class="form">
-                        <label for="js-form-rating" id="rating-label">RATING</label>
+                        <label for="js-form-rating" id="rating-label">Rating</label>
                         </div>
                         <div class="js-ratings" aria-labelledby="rating">
                             <input type="radio" id="js-ratings" name="stars" value="1">
@@ -120,9 +117,9 @@ const generateBookmarkAddHTML = function() {
                         </div>
                         <hr>
                         <div class="form">
-                        <label for="js-form-description">DESCRIPTION</label>
+                        <label for="js-form-description">Bookmark Description</label>
                         <div>
-                            <textarea id="js-form-description" name="description" type="text" placeholder="This is a really cool website!"></textarea>
+                            <textarea id="js-form-description" name="description" type="text" placeholder="We learn code and build cool stuff!"></textarea>
                             </div>
                         </div>
                         <hr>
@@ -132,7 +129,7 @@ const generateBookmarkAddHTML = function() {
                         </div>
                         <hr>
                         <div class="add-btn-container">
-                            <button type="submit" id="js-add-bookmark" class="add-button">ADD BOOKMARK</button>
+                            <button type="submit" id="js-add-bookmark" class="add-button">CREATE BOOKMARK</button>
                             <button type="reset" value"cancel" id="js-cancel-bookmark" class="cancel-button">CANCEL</button>
                         </div>
                     </fieldset>
@@ -142,18 +139,7 @@ const generateBookmarkAddHTML = function() {
     `;
 };
 
-
-
-// --- LIST --- //
-
-const generateBookmarkListHTML = function(bookmarks) {
-    const bookmarkListHTML = bookmarks.map(bookmark => generateBookmarkHTML(bookmark));
-    return bookmarkListHTML.join('');
-};
-
-
-
-// --- RATING --- //
+// Attach ranking 1-5 to bookmark entries
 
 const generateStarRating = function(bookmark) {
     let rating;
@@ -163,9 +149,7 @@ const generateStarRating = function(bookmark) {
     return rating;
 };
 
-
-
-// --- ADD --- //
+// Add new bookmark entry
 
 const handleBookmarkAdd = function(e) {
         e.preventDefault();
@@ -176,15 +160,10 @@ const handleBookmarkAdd = function(e) {
     render();
 };
 
-
-
-// --- SUBMIT --- //
+// Confirm new bookmark entry by user
 
 const handleBookmarkSubmit = function(event) {
         event.preventDefault();
-        // let formValue = $('.add-button')[0];
-        // let $inputs = $('#js-new-item-form :input');
-        // let jsonObject = serializeJson($inputs);
         let formInputs = {};
         formInputs.title = $('#js-form-title').val();
         formInputs.rating = $('#js-ratings:checked').val();
@@ -202,9 +181,16 @@ const handleBookmarkSubmit = function(event) {
         });
 };
 
+// Stop submission of new bookmark entry in progress
 
+const handleBookmarkCancel = function(event) {
+    console.log('cancel');
+    event.preventDefault();
+    event = STORE.setAdding(false);
+    render();
+};
 
-// --- DELETE --- //
+// Remove a bookmark entry
 
 const handleBookmarkDelete = function(event) {
     event.preventDefault();
@@ -219,20 +205,7 @@ const handleBookmarkDelete = function(event) {
     });
 };
 
-
-
-// --- CANCEL --- //
-
-const handleBookmarkCancel = function(event) {
-        console.log('cancel');
-        event.preventDefault();
-        event = STORE.setAdding(false);
-        render();
-};
-
-
-
-// --- EXPAND --- //
+// Added view/user functionality -- expand view/options for bookmark
 
 const getBookmarkID = function(target) {
     return $(target).closest('.js-bookmark-hidden-container').data('item-id');
@@ -246,7 +219,7 @@ const handleBookmarkExpand = function(event) {
 
 
 
-// --- FILTER --- //
+// Sort/filter through existing entries
 
 const handleBookmarkFilter = function() {
         let filterParam = $('#js-ratings-filter').val();
@@ -257,7 +230,7 @@ const handleBookmarkFilter = function() {
 
 
 
-// --- ERRORS --- //
+// Handle errors
 
 const generateError = function(errorMessage) {
     return `
@@ -281,19 +254,7 @@ const renderError = function() {
 };
 
 
-
-// --- SERIALIZE --- //
-
-// const serializeJson = function(form) {
-//     const formValue = new FormData(form[0]);
-//     const obj = {};
-//     formValue.forEach((val, name) => obj[name] = val);
-//     return JSON.stringify(obj);
-// }
-
-
-
-// --- EVENT LISTNERS --- //
+// Event listeners
 
 const bindEventListeners = function() {
     $('#js-new-bookmark').on('click', handleBookmarkAdd),

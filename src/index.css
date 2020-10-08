@@ -1,25 +1,5 @@
-.hidden {
-    display: none;
-}
-
-.flex-container {
-    justify-content: center;
-    margin: auto auto 0 auto;
-    padding: 20px;
-    font-size: 28px;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.controls {
-    justify-content: center;
-    text-align: center;
-}
-
-.filter-label .filter-control {
-    text-align: right;
+.flex-form {
+    display: inline-flex;
 }
 
 .js-bookmarks-container {
@@ -30,10 +10,15 @@ body {
     width: 100%;
 }
 
-header {
-    width: 100%;
-    text-align: center;
-    margin: auto;
+.hidden {
+    display: none;
+}
+
+.flex-container {
+    justify-content: center;
+    margin: auto auto 0 auto;
+    padding: 20px;
+    font-size: 28px;
 }
 
 h1 {
@@ -54,12 +39,45 @@ p {
     margin: 15px;
 }
 
-.js-bookmark-title {
-    width: 100%;
+hr {
+    width: 420px;
+    height: 32px;
+    border: none;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background-image: url("images/divider.png");
 }
 
-.flex-form {
-    display: inline-flex;
+.controls {
+    justify-content: center;
+    text-align: center;
+}
+
+.filter-label .filter-control {
+    text-align: right;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #74a4bb;
+}
+
+button {
+    font-size: 24px;
+}
+
+button, option, select {
+    background-color: lightgray;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+.js-bookmark-title {
+    width: 100%;
 }
 
 .js-visit-button {
@@ -73,10 +91,6 @@ p {
 .new-button {
     width: auto;
     height: 40px;
-}
-
-button {
-    font-size: 24px;
 }
 
 .add-button {
