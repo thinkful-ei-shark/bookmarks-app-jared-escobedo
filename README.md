@@ -4,8 +4,8 @@ A bookmark application to create, edit, and delete bookmarks. Bookmarks have tit
 
 This application was written using AJAX, Webpack, jQuery, JavaScript, HTML, and CSS.
 
-[site]: 
-[GithubRepo]: 
+[site]: https://thinkful-ei-shark.github.io/bookmarks-app-jared-escobedo/
+[GithubRepo]: https://github.com/thinkful-ei-shark/bookmarks-app-jared-escobedo
 
 ## User Stories
 As a user:
