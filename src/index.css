@@ -1,0 +1,158 @@
+.hidden {
+    display: none;
+}
+
+.flex-container {
+    justify-content: center;
+    margin: auto auto 0 auto;
+    padding: 20px;
+    font-size: 28px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.controls {
+    justify-content: center;
+    text-align: center;
+}
+
+.filter-label .filter-control {
+    text-align: right;
+}
+
+.js-bookmarks-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+h1 {
+    font-size: 42px;
+    text-align: center;
+    margin: 0;
+}
+
+h2 {
+    font-size: 28px;
+    text-align: left;
+    margin: 15px;
+}
+
+p {
+    font-size: 18px;
+    text-align: left;
+    margin: 15px;
+}
+
+.js-bookmark-title {
+    width: 100%;
+}
+
+.flex-form {
+    display: inline-flex;
+}
+
+.js-visit-button {
+    font-size: 18px;
+}
+
+.js-delete-button {
+    font-size: 18px;
+}
+
+.new-button {
+    width: auto;
+    height: 40px;
+}
+
+button {
+    font-size: 24px;
+}
+
+.add-button {
+    font-size: 18px;
+}
+
+.cancel-button {
+    font-size: 18px;
+}
+
+.expand-button {
+    height: 40px;
+}
+
+.title-and-button {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+select {
+    font-size: 25px;
+    height: 40px;
+}
+
+option {
+    font-size: 25px;
+}
+
+.star-rating {
+    font-size: 28px;
+}
+
+input[type=radio] {
+    width: 1em;
+    height: 1em;
+}
+
+fieldset {
+    margin: 0px;
+}
+
+textarea {
+    width: 200px;
+    height: 100px;
+}
+
+input[type="text"] {
+    width: 200px;
+    height: 25px;
+}
+
+input[type="url"] {
+    width: 200px;
+    height: 25px;
+}
+
+label {
+    font-size: 20px;
+}
+
+.js-ratings {
+    font-size: 18px;
+}
+
+legend {
+    font-size: 24px;
+}
+
+@media all and (min-width: 900px) {
+    .flex-container {
+        width: 500px;
+    }
+}
